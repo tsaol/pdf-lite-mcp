@@ -41,36 +41,68 @@
 
 ## Installation
 
+### From PyPI (recommended)
+```bash
+# Install using uvx (no need to clone repository)
+uvx pdf-reader-mcp
+
+# Or install globally
+pip install pdf-reader-mcp
+```
+
+### From source
 ```bash
 # Install uv
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
-# Install dependencies
+# Clone and install
+git clone https://github.com/tsaol/pdf-reader-mcp.git
+cd pdf-reader-mcp
 uv sync
 ```
 
 ## Amazon Q CLI Configuration
 
+### Using PyPI package (recommended)
 ```json
 {
   "mcpServers": {
     "pdf-reader": {
-      "command": "uv",
-      "args": ["run", "python", "run_server.py"],
-      "cwd": "/path/to/pdf-reader-mcp"
+      "command": "uvx",
+      "args": ["pdf-reader-mcp"],
+      "disabled": false,
+      "autoApprove": ["read_pdf"]
     }
   }
 }
 ```
 
-**Alternative configuration** (if uv is not available):
+### Using local development version
 ```json
 {
   "mcpServers": {
     "pdf-reader": {
-      "command": "python",
-      "args": ["run_server.py"],
-      "cwd": "/path/to/pdf-reader-mcp"
+      "command": "uv",
+      "args": ["run", "python", "src/main.py"],
+      "cwd": "/path/to/pdf-reader-mcp",
+      "env": {
+        "PYTHONPATH": "."
+      }
+    }
+  }
+}
+```
+
+### Using Git URL
+```json
+{
+  "mcpServers": {
+    "pdf-reader": {
+      "command": "uvx",
+      "args": ["--from", "git+https://github.com/tsaol/pdf-reader-mcp.git", "pdf-reader-mcp"],
+      "env": {
+        "PYTHONPATH": "."
+      }
     }
   }
 }
