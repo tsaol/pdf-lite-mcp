@@ -7,8 +7,8 @@ import sys
 import asyncio
 from pathlib import Path
 
-# Add current directory to path
-sys.path.insert(0, str(Path(__file__).parent))
+# Add parent directory to path to access src
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 async def test_url_pdf():
     """Test with a real PDF from URL."""

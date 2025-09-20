@@ -9,19 +9,20 @@ import asyncio
 from pathlib import Path
 from io import StringIO
 
-# Add current directory to path
-sys.path.insert(0, str(Path(__file__).parent))
+# Add parent directory to path to access src
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 def test_mcp_server_import():
     """Test MCP server can be imported and initialized."""
     print("🔍 Testing MCP server import...")
 
     try:
-        # Change to src directory for imports
+        # Change to project root directory for imports
         import os
         original_dir = os.getcwd()
-        src_dir = Path(__file__).parent / "src"
-        os.chdir(src_dir)
+        project_root = Path(__file__).parent.parent
+        src_dir = project_root / "src"
+        os.chdir(project_root)
 
         # Add src to path
         sys.path.insert(0, str(src_dir))
@@ -41,8 +42,9 @@ async def test_list_tools():
 
     try:
         import os
-        src_dir = Path(__file__).parent / "src"
-        os.chdir(src_dir)
+        project_root = Path(__file__).parent.parent
+        src_dir = project_root / "src"
+        os.chdir(project_root)
         sys.path.insert(0, str(src_dir))
 
         from main import list_tools
@@ -68,8 +70,9 @@ async def test_call_tool():
 
     try:
         import os
-        src_dir = Path(__file__).parent / "src"
-        os.chdir(src_dir)
+        project_root = Path(__file__).parent.parent
+        src_dir = project_root / "src"
+        os.chdir(project_root)
         sys.path.insert(0, str(src_dir))
 
         from main import call_tool
@@ -103,8 +106,9 @@ async def test_valid_request():
 
     try:
         import os
-        src_dir = Path(__file__).parent / "src"
-        os.chdir(src_dir)
+        project_root = Path(__file__).parent.parent
+        src_dir = project_root / "src"
+        os.chdir(project_root)
         sys.path.insert(0, str(src_dir))
 
         from main import call_tool
@@ -204,8 +208,9 @@ async def test_with_real_pdf():
 
     try:
         import os
-        src_dir = Path(__file__).parent / "src"
-        os.chdir(src_dir)
+        project_root = Path(__file__).parent.parent
+        src_dir = project_root / "src"
+        os.chdir(project_root)
         sys.path.insert(0, str(src_dir))
 
         from main import call_tool

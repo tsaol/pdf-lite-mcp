@@ -4,6 +4,8 @@ Simplified implementation optimized for Amazon Q CLI.
 """
 
 import sys
+import logging
+import time
 from pathlib import Path
 from typing import List, Dict, Any, Optional, Union
 from urllib.request import urlopen
@@ -11,10 +13,12 @@ from urllib.error import URLError
 import tempfile
 import os
 
+logger = logging.getLogger(__name__)
+
 try:
     from pypdf import PdfReader
 except ImportError:
-    print("Error: pypdf is required. Install with: pip install pypdf", file=sys.stderr)
+    print("Error: pypdf is required. Install with: uv add pypdf>=4.0.0", file=sys.stderr)
     sys.exit(1)
 
 from models import (
@@ -88,6 +92,8 @@ class PdfProcessor:
             Result for this source
         """
         source_desc = source.path or source.url or "unknown"
+        start_time = time.time()
+        logger.debug(f"Starting to process PDF source: {source_desc}")
 
         try:
             # Load PDF
@@ -139,6 +145,9 @@ class PdfProcessor:
                     # Return as full text
                     full_text = "\n\n".join(page.text for page in extracted_texts)
                     data.full_text = clean_pdf_text(full_text)
+
+            processing_time = time.time() - start_time
+            logger.debug(f"Successfully processed PDF source {source_desc} in {processing_time:.2f}s")
 
             return PdfSourceResult(
                 source=source_desc,
@@ -196,8 +205,8 @@ class PdfProcessor:
             Exception: If PDF cannot be loaded from URL
         """
         try:
-            # Download to temporary file
-            with urlopen(url) as response:
+            # Download to temporary file with timeout
+            with urlopen(url, timeout=30) as response:
                 if response.getcode() != 200:
                     raise URLError(f"HTTP {response.getcode()}")
 

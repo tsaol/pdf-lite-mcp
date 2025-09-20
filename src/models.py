@@ -20,6 +20,10 @@ class PdfSource(BaseModel):
                 raise ValueError("Pages list cannot be empty")
             if any(page <= 0 for page in v):
                 raise ValueError("Page numbers must be positive integers")
+            if len(v) > 100:  # Reasonable limit for batch processing
+                raise ValueError("Too many pages requested (limit: 100)")
+            # Remove duplicates and sort
+            v = sorted(list(set(v)))
         return v
 
     @validator('url')
@@ -37,7 +41,7 @@ class PdfSource(BaseModel):
 
 class ReadPdfRequest(BaseModel):
     """Request model for read_pdf tool."""
-    sources: List[PdfSource] = Field(..., min_items=1, description="PDF sources to process")
+    sources: List[PdfSource] = Field(..., min_items=1, max_items=10, description="PDF sources to process (max 10)")
     include_full_text: bool = Field(False, description="Include full text if no specific pages requested")
     include_metadata: bool = Field(True, description="Include PDF metadata")
     include_page_count: bool = Field(True, description="Include total page count")

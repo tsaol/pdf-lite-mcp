@@ -1,0 +1,1 @@
+"""Tests for tsaol-pdf-reader-mcp."""

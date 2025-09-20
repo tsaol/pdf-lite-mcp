@@ -9,8 +9,8 @@ import sys
 import json
 from pathlib import Path
 
-# Add current directory to path
-sys.path.insert(0, str(Path(__file__).parent))
+# Add parent directory to path to access src
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 # Import with explicit path
 from src.models import ReadPdfRequest, PdfSource

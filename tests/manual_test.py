@@ -7,7 +7,8 @@ import sys
 import asyncio
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent))
+# Add parent directory to path to access src
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 async def manual_test():
     """Interactive manual testing."""

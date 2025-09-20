@@ -7,7 +7,10 @@ A simplified Python MCP server for reading PDF files, optimized for Amazon Q CLI
 import asyncio
 import sys
 import json
-from typing import Any, Dict
+import logging
+import os
+import time
+from typing import Any, Dict, List
 
 try:
     from mcp.server import Server
@@ -21,7 +24,7 @@ try:
         ListToolsRequest,
     )
 except ImportError:
-    print("Error: mcp package is required. Install with: pip install mcp", file=sys.stderr)
+    print("Error: mcp package is required. Install with: uv add mcp>=1.1.0", file=sys.stderr)
     sys.exit(1)
 
 from pydantic import ValidationError
@@ -31,6 +34,22 @@ from pdf_reader import PdfProcessor
 from utils import format_error_for_amazon_q
 
 
+# Configure logging
+def setup_logging():
+    """Setup logging configuration."""
+    log_level = os.getenv('LOG_LEVEL', 'INFO').upper()
+    logging.basicConfig(
+        level=getattr(logging, log_level, logging.INFO),
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        handlers=[
+            logging.StreamHandler(sys.stderr)
+        ]
+    )
+
+# Setup logging
+setup_logging()
+logger = logging.getLogger(__name__)
+
 # Initialize the PDF processor
 pdf_processor = PdfProcessor()
 
@@ -39,7 +58,7 @@ server = Server("tsaol-pdf-reader-mcp")
 
 
 @server.list_tools()
-async def list_tools() -> list[Tool]:
+async def list_tools() -> List[Tool]:
     """
     List available tools.
 
@@ -110,7 +129,7 @@ async def list_tools() -> list[Tool]:
 
 
 @server.call_tool()
-async def call_tool(name: str, arguments: Dict[str, Any]) -> list[TextContent]:
+async def call_tool(name: str, arguments: Dict[str, Any]) -> List[TextContent]:
     """
     Handle tool calls.
 
@@ -121,15 +140,26 @@ async def call_tool(name: str, arguments: Dict[str, Any]) -> list[TextContent]:
     Returns:
         Tool result
     """
+    start_time = time.time()
+    logger.info(f"Tool call received: {name}")
+
     if name != "read_pdf":
+        logger.error(f"Unknown tool requested: {name}")
         raise ValueError(f"Unknown tool: {name}")
 
     try:
         # Validate and parse arguments
         request = ReadPdfRequest.parse_obj(arguments)
+        logger.debug(f"Processing {len(request.sources)} PDF source(s)")
 
         # Process the request
         response = await pdf_processor.process_request(request)
+
+        # Log results summary with performance metrics
+        processing_time = time.time() - start_time
+        successful = sum(1 for result in response.results if result.success)
+        total = len(response.results)
+        logger.info(f"PDF processing completed: {successful}/{total} successful in {processing_time:.2f}s")
 
         # Format response for Amazon Q CLI
         result_text = _format_response_for_amazon_q(response)
@@ -137,10 +167,12 @@ async def call_tool(name: str, arguments: Dict[str, Any]) -> list[TextContent]:
         return [TextContent(type="text", text=result_text)]
 
     except ValidationError as e:
+        logger.warning(f"Validation error: {e}")
         error_msg = _format_validation_error_for_amazon_q(e)
         return [TextContent(type="text", text=error_msg)]
 
     except Exception as e:
+        logger.error(f"Unexpected error during PDF processing: {e}", exc_info=True)
         error_msg = format_error_for_amazon_q(e, "PDF processing")
         return [TextContent(type="text", text=f"❌ Error: {error_msg}")]
 
@@ -271,7 +303,7 @@ def _format_validation_error_for_amazon_q(error: ValidationError) -> str:
 
 
 async def main():
-    """Main entry point."""
+    """Main entry point for async execution."""
     print("Starting tsaol-pdf-reader-mcp server...", file=sys.stderr)
 
     async with stdio_server() as (read_stream, write_stream):
@@ -289,7 +321,8 @@ async def main():
         )
 
 
-if __name__ == "__main__":
+def main_cli():
+    """CLI entry point for package scripts."""
     try:
         asyncio.run(main())
     except KeyboardInterrupt:
@@ -297,3 +330,7 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"Server error: {e}", file=sys.stderr)
         sys.exit(1)
+
+
+if __name__ == "__main__":
+    main_cli()

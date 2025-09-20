@@ -11,7 +11,7 @@ authors = [
 ]
 readme = "README.md"
 license = {text = "MIT"}
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 dependencies = [
     "mcp>=1.1.0",
     "pydantic>=2.0.0",
@@ -24,8 +24,6 @@ classifiers = [
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
 ]
@@ -36,7 +34,7 @@ Repository = "https://github.com/tsaol/pdf-reader-mcp.git"
 Issues = "https://github.com/tsaol/pdf-reader-mcp/issues"
 
 [project.scripts]
-tsaol-pdf-reader-mcp = "src.main:main"
+tsaol-pdf-reader-mcp = "src.main:main_cli"
 
 [tool.setuptools.packages.find]
 where = ["."]

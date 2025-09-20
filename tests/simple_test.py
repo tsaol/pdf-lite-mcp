@@ -7,8 +7,8 @@ Tests basic imports and model validation.
 import sys
 from pathlib import Path
 
-# Add current directory to path
-sys.path.insert(0, str(Path(__file__).parent))
+# Add parent directory to path to access src
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 def test_imports():
     """Test that all modules can be imported."""
