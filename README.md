@@ -1,9 +1,41 @@
 # pdf-reader-mcp
 
-A Python MCP server for reading PDF files, optimized for Amazon Q CLI usage.
+<!-- Badges -->
+<p align="center">
+  <a href="https://github.com/tsaol/pdf-reader-mcp/actions/workflows/ci.yml">
+    <img src="https://github.com/tsaol/pdf-reader-mcp/actions/workflows/ci.yml/badge.svg" alt="CI/CD Pipeline">
+  </a>
+  <a href="https://github.com/tsaol/pdf-reader-mcp/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT">
+  </a>
+  <a href="https://github.com/tsaol/pdf-reader-mcp/releases">
+    <img src="https://img.shields.io/github/v/release/tsaol/pdf-reader-mcp" alt="Latest Release">
+  </a>
+  <a href="https://www.python.org/downloads/">
+    <img src="https://img.shields.io/badge/python-3.10%2B-blue.svg" alt="Python 3.10+">
+  </a>
+  <a href="https://github.com/tsaol/pdf-reader-mcp/issues">
+    <img src="https://img.shields.io/github/issues/tsaol/pdf-reader-mcp" alt="GitHub Issues">
+  </a>
+  <a href="https://github.com/tsaol/pdf-reader-mcp/stargazers">
+    <img src="https://img.shields.io/github/stars/tsaol/pdf-reader-mcp" alt="GitHub Stars">
+  </a>
+</p>
+
+<!-- Project Description -->
+<p align="center">
+  A <strong>simplified Python MCP server</strong> for reading PDF files, specifically optimized for <strong>Amazon Q CLI</strong> usage.
+</p>
+
+<p align="center">
+  Built as a streamlined alternative to complex PDF processing tools, focusing on clean output and reliable performance.
+</p>
 
 ## Features
 
+- **Amazon Q CLI Enhanced Output** - Structured responses with emojis and clear formatting
+- **Smart Content Truncation** - Prevents overwhelming output in CLI environments
+- **CLI-Optimized Error Messages** - User-friendly error handling for command-line usage
 - Read PDFs from local files or URLs
 - Extract specific pages or full content
 - Metadata extraction (title, author, page count)
