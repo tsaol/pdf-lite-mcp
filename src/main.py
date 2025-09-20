@@ -29,9 +29,9 @@ except ImportError:
 
 from pydantic import ValidationError
 
-from models import ReadPdfRequest, ReadPdfResponse, McpResponse, PdfSourceResult, PdfResultData
-from pdf_reader import PdfProcessor
-from utils import format_error_for_amazon_q
+from .models import ReadPdfRequest, ReadPdfResponse, McpResponse, PdfSourceResult, PdfResultData
+from .pdf_reader import PdfProcessor
+from .utils import format_error_for_amazon_q
 
 
 # Configure logging

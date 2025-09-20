@@ -21,7 +21,7 @@ except ImportError:
     print("Error: pypdf is required. Install with: uv add pypdf>=4.0.0", file=sys.stderr)
     sys.exit(1)
 
-from models import (
+from .models import (
     PdfSource,
     PdfResultData,
     PdfSourceResult,
@@ -29,7 +29,7 @@ from models import (
     ReadPdfRequest,
     ReadPdfResponse
 )
-from utils import PathUtils, format_error_for_amazon_q, clean_pdf_text, truncate_text
+from .utils import PathUtils, format_error_for_amazon_q, clean_pdf_text, truncate_text
 
 
 class PdfProcessor:

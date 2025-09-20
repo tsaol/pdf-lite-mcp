@@ -15,6 +15,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 # Import with explicit path
 from src.models import ReadPdfRequest, PdfSource
 from src.utils import PathUtils
+from src.pdf_reader import PdfProcessor
 
 
 async def test_path_utils():
@@ -106,8 +107,8 @@ async def test_amazon_q_formatting():
     print("\n🔍 Testing Amazon Q CLI formatting...")
 
     # Import the formatting function
-    from main import _format_single_result_for_amazon_q
-    from models import PdfSourceResult, PdfResultData, ExtractedPageText
+    from src.main import _format_single_result_for_amazon_q
+    from src.models import PdfSourceResult, PdfResultData, ExtractedPageText
 
     # Create test data
     test_data = PdfResultData(
