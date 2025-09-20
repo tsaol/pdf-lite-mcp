@@ -56,11 +56,21 @@ uv sync
   "mcpServers": {
     "pdf-reader": {
       "command": "uv",
-      "args": ["run", "python", "src/main.py"],
-      "cwd": "/path/to/pdf-reader-mcp",
-      "env": {
-        "PYTHONPATH": "."
-      }
+      "args": ["run", "python", "run_server.py"],
+      "cwd": "/path/to/pdf-reader-mcp"
+    }
+  }
+}
+```
+
+**Alternative configuration** (if uv is not available):
+```json
+{
+  "mcpServers": {
+    "pdf-reader": {
+      "command": "python",
+      "args": ["run_server.py"],
+      "cwd": "/path/to/pdf-reader-mcp"
     }
   }
 }
