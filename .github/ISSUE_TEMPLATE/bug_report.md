@@ -25,7 +25,7 @@ A clear and concise description of what actually happened.
 ## Environment
 - **OS**: [e.g. Ubuntu 22.04, macOS 14, Windows 11]
 - **Python version**: [e.g. 3.10.12]
-- **pdf-reader-mcp version**: [e.g. 0.1.0]
+- **pdf-lite-mcp version**: [e.g. 1.0.1]
 - **Installation method**: [e.g. uv, pip, from source]
 
 ## PDF File Details
@@ -50,4 +50,4 @@ Add any other context about the problem here. Include:
 - [ ] I have searched existing issues to ensure this is not a duplicate
 - [ ] I have provided all the requested information
 - [ ] I can reproduce this issue consistently
-- [ ] I have tested with the latest version of pdf-reader-mcp
+- [ ] I have tested with the latest version of pdf-lite-mcp

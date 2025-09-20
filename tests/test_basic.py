@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Basic test script for pdf-reader-mcp.
+Basic test script for pdf-lite-mcp.
 Tests core functionality without requiring actual MCP client.
 """
 
@@ -208,7 +208,7 @@ async def test_local_pdf():
 
 async def main():
     """Run all tests."""
-    print("🧪 Running pdf-reader-mcp basic tests\n")
+    print("🧪 Running pdf-lite-mcp basic tests\n")
 
     await test_path_utils()
     await test_pdf_models()

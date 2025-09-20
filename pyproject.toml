@@ -3,8 +3,8 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pdf-reader-mcp"
-version = "0.1.0"
+name = "pdf-lite-mcp"
+version = "1.0.1"
 description = "A simplified Python MCP server for reading PDF files, optimized for Amazon Q CLI"
 authors = [
     {name = "tsaol", email = "tsaol@outlook.com"}
@@ -29,12 +29,12 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/tsaol/pdf-reader-mcp"
-Repository = "https://github.com/tsaol/pdf-reader-mcp.git"
-Issues = "https://github.com/tsaol/pdf-reader-mcp/issues"
+Homepage = "https://github.com/tsaol/pdf-lite-mcp"
+Repository = "https://github.com/tsaol/pdf-lite-mcp.git"
+Issues = "https://github.com/tsaol/pdf-lite-mcp/issues"
 
 [project.scripts]
-pdf-reader-mcp = "src.main:main_cli"
+pdf-lite-mcp = "src.main:main_cli"
 
 [tool.setuptools.packages.find]
 where = ["."]

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Main entry point for the pdf-reader-mcp server.
+Main entry point for the pdf-lite-mcp server.
 A simplified Python MCP server for reading PDF files, optimized for Amazon Q CLI.
 """
 
@@ -63,7 +63,7 @@ logger = logging.getLogger(__name__)
 pdf_processor = PdfProcessor()
 
 # Create the MCP server
-server = Server("pdf-reader-mcp")
+server = Server("pdf-lite-mcp")
 
 
 @server.list_tools()
@@ -313,15 +313,15 @@ def _format_validation_error_for_amazon_q(error: ValidationError) -> str:
 
 async def main():
     """Main entry point for async execution."""
-    print("Starting pdf-reader-mcp server...", file=sys.stderr)
+    print("Starting pdf-lite-mcp server...", file=sys.stderr)
 
     async with stdio_server() as (read_stream, write_stream):
         await server.run(
             read_stream,
             write_stream,
             InitializationOptions(
-                server_name="pdf-reader-mcp",
-                server_version="0.1.0",
+                server_name="pdf-lite-mcp",
+                server_version="1.0.1",
                 capabilities=ServerCapabilities(
                     tools=ToolsCapability()
                 )
@@ -334,7 +334,7 @@ def main_cli():
     try:
         asyncio.run(main())
     except KeyboardInterrupt:
-        print("\nShutting down pdf-reader-mcp server...", file=sys.stderr)
+        print("\nShutting down pdf-lite-mcp server...", file=sys.stderr)
     except Exception as e:
         print(f"Server error: {e}", file=sys.stderr)
         sys.exit(1)

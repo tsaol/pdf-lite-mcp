@@ -246,8 +246,8 @@ wheels = [
 ]
 
 [[package]]
-name = "pdf-reader-mcp"
-version = "0.1.0"
+name = "pdf-lite-mcp"
+version = "1.0.1"
 source = { editable = "." }
 dependencies = [
     { name = "mcp" },

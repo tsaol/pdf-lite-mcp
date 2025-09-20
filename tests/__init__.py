@@ -1,1 +1,1 @@
-"""Tests for pdf-reader-mcp."""
+"""Tests for pdf-lite-mcp."""

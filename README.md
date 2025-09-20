@@ -1,24 +1,24 @@
-# pdf-reader-mcp
+# pdf-lite-mcp
 
 <!-- Badges -->
 <p align="center">
-  <a href="https://github.com/tsaol/pdf-reader-mcp/actions/workflows/ci.yml">
-    <img src="https://github.com/tsaol/pdf-reader-mcp/actions/workflows/ci.yml/badge.svg" alt="CI/CD Pipeline">
+  <a href="https://github.com/tsaol/pdf-lite-mcp/actions/workflows/ci.yml">
+    <img src="https://github.com/tsaol/pdf-lite-mcp/actions/workflows/ci.yml/badge.svg" alt="CI/CD Pipeline">
   </a>
-  <a href="https://github.com/tsaol/pdf-reader-mcp/blob/main/LICENSE">
+  <a href="https://github.com/tsaol/pdf-lite-mcp/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT">
   </a>
-  <a href="https://github.com/tsaol/pdf-reader-mcp/releases">
-    <img src="https://img.shields.io/github/v/release/tsaol/pdf-reader-mcp" alt="Latest Release">
+  <a href="https://github.com/tsaol/pdf-lite-mcp/releases">
+    <img src="https://img.shields.io/github/v/release/tsaol/pdf-lite-mcp" alt="Latest Release">
   </a>
   <a href="https://www.python.org/downloads/">
     <img src="https://img.shields.io/badge/python-3.10%2B-blue.svg" alt="Python 3.10+">
   </a>
-  <a href="https://github.com/tsaol/pdf-reader-mcp/issues">
-    <img src="https://img.shields.io/github/issues/tsaol/pdf-reader-mcp" alt="GitHub Issues">
+  <a href="https://github.com/tsaol/pdf-lite-mcp/issues">
+    <img src="https://img.shields.io/github/issues/tsaol/pdf-lite-mcp" alt="GitHub Issues">
   </a>
-  <a href="https://github.com/tsaol/pdf-reader-mcp/stargazers">
-    <img src="https://img.shields.io/github/stars/tsaol/pdf-reader-mcp" alt="GitHub Stars">
+  <a href="https://github.com/tsaol/pdf-lite-mcp/stargazers">
+    <img src="https://img.shields.io/github/stars/tsaol/pdf-lite-mcp" alt="GitHub Stars">
   </a>
 </p>
 
@@ -44,10 +44,10 @@
 ### From PyPI (recommended)
 ```bash
 # Install using uvx (no need to clone repository)
-uvx pdf-reader-mcp
+uvx pdf-lite-mcp
 
 # Or install globally
-pip install pdf-reader-mcp
+pip install pdf-lite-mcp
 ```
 
 ### From source
@@ -56,8 +56,8 @@ pip install pdf-reader-mcp
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Clone and install
-git clone https://github.com/tsaol/pdf-reader-mcp.git
-cd pdf-reader-mcp
+git clone https://github.com/tsaol/pdf-lite-mcp.git
+cd pdf-lite-mcp
 uv sync
 ```
 
@@ -67,9 +67,9 @@ uv sync
 ```json
 {
   "mcpServers": {
-    "pdf-reader": {
+    "pdf-lite": {
       "command": "uvx",
-      "args": ["pdf-reader-mcp"],
+      "args": ["pdf-lite-mcp"],
       "disabled": false,
       "autoApprove": ["read_pdf"]
     }
@@ -81,10 +81,10 @@ uv sync
 ```json
 {
   "mcpServers": {
-    "pdf-reader": {
+    "pdf-lite": {
       "command": "uv",
       "args": ["run", "python", "src/main.py"],
-      "cwd": "/path/to/pdf-reader-mcp",
+      "cwd": "/path/to/pdf-lite-mcp",
       "env": {
         "PYTHONPATH": "."
       }
@@ -97,9 +97,9 @@ uv sync
 ```json
 {
   "mcpServers": {
-    "pdf-reader": {
+    "pdf-lite": {
       "command": "uvx",
-      "args": ["--from", "git+https://github.com/tsaol/pdf-reader-mcp.git", "pdf-reader-mcp"],
+      "args": ["--from", "git+https://github.com/tsaol/pdf-lite-mcp.git", "pdf-lite-mcp"],
       "env": {
         "PYTHONPATH": "."
       }

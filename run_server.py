@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Standalone entry point for the pdf-reader-mcp server.
+Standalone entry point for the pdf-lite-mcp server.
 This script properly sets up the Python path and starts the MCP server.
 """
 

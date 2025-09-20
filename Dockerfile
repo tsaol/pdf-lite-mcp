@@ -1,4 +1,4 @@
-# Multi-stage build for pdf-reader-mcp
+# Multi-stage build for pdf-lite-mcp
 FROM python:3.11-slim as builder
 
 # Install system dependencies
@@ -32,7 +32,7 @@ FROM python:3.11-slim as production
 
 LABEL maintainer="tsaol <tsaol@outlook.com>"
 LABEL description="A simplified Python MCP server for reading PDF files"
-LABEL version="0.1.0"
+LABEL version="1.0.1"
 
 # Create non-root user
 RUN useradd --create-home --shell /bin/bash --user-group pdfuser
@@ -81,10 +81,10 @@ CMD ["python", "src/main.py"]
 
 # Alternative commands for different use cases:
 # For development with volume mount:
-# docker run -v $(pwd)/pdfs:/app/pdfs pdf-reader-mcp
+# docker run -v $(pwd)/pdfs:/app/pdfs pdf-lite-mcp
 
 # For production with custom config:
-# docker run -e LOG_LEVEL=DEBUG pdf-reader-mcp
+# docker run -e LOG_LEVEL=DEBUG pdf-lite-mcp
 
 # For testing:
-# docker run --rm pdf-reader-mcp python tests/simple_test.py
+# docker run --rm pdf-lite-mcp python tests/simple_test.py
