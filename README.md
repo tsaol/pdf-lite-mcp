@@ -33,9 +33,6 @@
 
 ## Features
 
-- **Amazon Q CLI Enhanced Output** - Structured responses with emojis and clear formatting
-- **Smart Content Truncation** - Prevents overwhelming output in CLI environments
-- **CLI-Optimized Error Messages** - User-friendly error handling for command-line usage
 - Read PDFs from local files or URLs
 - Extract specific pages or full content
 - Metadata extraction (title, author, page count)
