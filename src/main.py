@@ -29,9 +29,16 @@ except ImportError:
 
 from pydantic import ValidationError
 
-from .models import ReadPdfRequest, ReadPdfResponse, McpResponse, PdfSourceResult, PdfResultData
-from .pdf_reader import PdfProcessor
-from .utils import format_error_for_amazon_q
+# Try relative imports first, fallback to absolute imports
+try:
+    from .models import ReadPdfRequest, ReadPdfResponse, McpResponse, PdfSourceResult, PdfResultData
+    from .pdf_reader import PdfProcessor
+    from .utils import format_error_for_amazon_q
+except ImportError:
+    # Fallback for when running as standalone script
+    from models import ReadPdfRequest, ReadPdfResponse, McpResponse, PdfSourceResult, PdfResultData
+    from pdf_reader import PdfProcessor
+    from utils import format_error_for_amazon_q
 
 
 # Configure logging
@@ -313,10 +320,7 @@ async def main():
             InitializationOptions(
                 server_name="pdf-reader-mcp",
                 server_version="0.1.0",
-                capabilities=server.get_capabilities(
-                    notification_options=None,
-                    experimental_capabilities=None
-                )
+                capabilities={}
             )
         )
 
