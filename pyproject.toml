@@ -3,11 +3,11 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "tsaol-pdf-reader-mcp"
+name = "pdf-reader-mcp"
 version = "0.1.0"
 description = "A simplified Python MCP server for reading PDF files, optimized for Amazon Q CLI"
 authors = [
-    {name = "tsaol", email = "your-email@example.com"}
+    {name = "tsaol", email = "tsaol@outlook.com"}
 ]
 readme = "README.md"
 license = {text = "MIT"}
@@ -34,7 +34,7 @@ Repository = "https://github.com/tsaol/pdf-reader-mcp.git"
 Issues = "https://github.com/tsaol/pdf-reader-mcp/issues"
 
 [project.scripts]
-tsaol-pdf-reader-mcp = "src.main:main_cli"
+pdf-reader-mcp = "src.main:main_cli"
 
 [tool.setuptools.packages.find]
 where = ["."]

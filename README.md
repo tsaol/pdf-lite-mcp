@@ -1,6 +1,43 @@
-# tsaol-pdf-reader-mcp
+# pdf-reader-mcp
 
-A **simplified Python MCP server** for reading PDF files, specifically optimized for **Amazon Q CLI** usage. Built as a streamlined alternative to complex PDF processing tools, focusing on clean output and reliable performance.
+<!-- Badges -->
+<p align="center">
+  <a href="https://github.com/tsaol/pdf-reader-mcp/actions/workflows/ci.yml">
+    <img src="https://github.com/tsaol/pdf-reader-mcp/actions/workflows/ci.yml/badge.svg" alt="CI/CD Pipeline">
+  </a>
+  <a href="https://github.com/tsaol/pdf-reader-mcp/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT">
+  </a>
+  <a href="https://github.com/tsaol/pdf-reader-mcp/releases">
+    <img src="https://img.shields.io/github/v/release/tsaol/pdf-reader-mcp" alt="Latest Release">
+  </a>
+  <a href="https://www.python.org/downloads/">
+    <img src="https://img.shields.io/badge/python-3.10%2B-blue.svg" alt="Python 3.10+">
+  </a>
+  <a href="https://github.com/tsaol/pdf-reader-mcp/issues">
+    <img src="https://img.shields.io/github/issues/tsaol/pdf-reader-mcp" alt="GitHub Issues">
+  </a>
+  <a href="https://github.com/tsaol/pdf-reader-mcp/stargazers">
+    <img src="https://img.shields.io/github/stars/tsaol/pdf-reader-mcp" alt="GitHub Stars">
+  </a>
+</p>
+
+<!-- Project Description -->
+<p align="center">
+  A <strong>simplified Python MCP server</strong> for reading PDF files, specifically optimized for <strong>Amazon Q CLI</strong> usage.
+</p>
+
+<p align="center">
+  Built as a streamlined alternative to complex PDF processing tools, focusing on clean output and reliable performance.
+</p>
+
+<p align="center">
+  <a href="#-installation">Installation</a> •
+  <a href="#-amazon-q-cli-integration">Usage</a> •
+  <a href="#-api-reference">API</a> •
+  <a href="#-testing-guide">Testing</a> •
+  <a href="#-contributing">Contributing</a>
+</p>
 
 ## ✨ Key Features
 
@@ -13,7 +50,7 @@ A **simplified Python MCP server** for reading PDF files, specifically optimized
 - 🔄 **Batch processing** - Handle multiple PDFs in one request
 - 🚨 **Robust error handling** - Graceful failure recovery
 
-## 🚀 Why Choose tsaol-pdf-reader-mcp?
+## 🚀 Why Choose pdf-reader-mcp?
 
 Unlike heavy-weight PDF processors, this server is designed specifically for AI assistants like Amazon Q CLI:
 
@@ -54,7 +91,7 @@ Create your MCP configuration file with the following settings:
       "args": ["run", "python", "src/main.py"],
       "name": "PDF Reader (tsaol)",
       "description": "Simplified Python PDF reader optimized for Amazon Q CLI",
-      "cwd": "/path/to/tsaol-pdf-reader-mcp",
+      "cwd": "/path/to/pdf-reader-mcp",
       "env": {
         "PYTHONPATH": ".",
         "PYTHONUNBUFFERED": "1"
@@ -73,7 +110,7 @@ Create your MCP configuration file with the following settings:
       "args": ["-m", "src.main"],
       "name": "PDF Reader (tsaol)",
       "description": "Simplified Python PDF reader optimized for Amazon Q CLI",
-      "cwd": "/path/to/tsaol-pdf-reader-mcp",
+      "cwd": "/path/to/pdf-reader-mcp",
       "env": {
         "PYTHONPATH": ".",
         "PYTHONUNBUFFERED": "1"
@@ -215,7 +252,7 @@ uv run python tests/simple_test.py
 
 **Expected Output:**
 ```
-🧪 Running simple tests for tsaol-pdf-reader-mcp
+🧪 Running simple tests for pdf-reader-mcp
 ✅ Models imported successfully
 ✅ Utils imported successfully
 ✅ Safe path resolved
@@ -326,6 +363,94 @@ Project passes tests when:
 - **URL downloads**: Depends on network speed
 - **Memory usage**: <100MB for typical PDFs
 
+## 🐳 Docker Support
+
+Run pdf-reader-mcp in a containerized environment:
+
+```bash
+# Build the Docker image
+docker build -t pdf-reader-mcp .
+
+# Run the container
+docker run -v $(pwd)/pdfs:/app/pdfs pdf-reader-mcp
+
+# Run with custom configuration
+docker run -e LOG_LEVEL=DEBUG pdf-reader-mcp
+```
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+
+### Quick Start for Contributors
+
+1. **Fork the repository**
+2. **Create a feature branch**: `git checkout -b feature/amazing-feature`
+3. **Make your changes** and add tests
+4. **Run the test suite**: `uv run python tests/simple_test.py`
+5. **Commit your changes**: `git commit -m 'feat: add amazing feature'`
+6. **Push to the branch**: `git push origin feature/amazing-feature`
+7. **Open a Pull Request**
+
+### Development Setup
+
+```bash
+# Clone your fork
+git clone https://github.com/your-username/pdf-reader-mcp.git
+cd pdf-reader-mcp
+
+# Install dependencies
+uv sync
+
+# Run tests
+uv run python tests/simple_test.py
+```
+
+## 📋 Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for a detailed history of changes.
+
+## 🔒 Security
+
+For security concerns, please review our [Security Policy](SECURITY.md).
+
+## 📜 Code of Conduct
+
+This project follows our [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you agree to abide by its terms.
+
+## 🙏 Acknowledgments
+
+- Built with [Model Context Protocol (MCP)](https://modelcontextprotocol.io/)
+- PDF processing powered by [PyPDF](https://pypdf.readthedocs.io/)
+- Modern Python packaging with [uv](https://docs.astral.sh/uv/)
+- Thanks to all [contributors](https://github.com/tsaol/pdf-reader-mcp/contributors)
+
+## 📞 Support
+
+- 📖 **Documentation**: Check our comprehensive README and inline code documentation
+- 🐛 **Bug Reports**: [Open an issue](https://github.com/tsaol/pdf-reader-mcp/issues/new?template=bug_report.md)
+- 💡 **Feature Requests**: [Request a feature](https://github.com/tsaol/pdf-reader-mcp/issues/new?template=feature_request.md)
+- 💬 **Questions**: [Start a discussion](https://github.com/tsaol/pdf-reader-mcp/discussions)
+
+## 📈 Project Stats
+
+<p align="center">
+  <img src="https://img.shields.io/github/languages/top/tsaol/pdf-reader-mcp" alt="Top Language">
+  <img src="https://img.shields.io/github/languages/code-size/tsaol/pdf-reader-mcp" alt="Code Size">
+  <img src="https://img.shields.io/github/last-commit/tsaol/pdf-reader-mcp" alt="Last Commit">
+  <img src="https://img.shields.io/github/commit-activity/m/tsaol/pdf-reader-mcp" alt="Commit Activity">
+</p>
+
 ## License
 
-MIT
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+<p align="center">
+  Made with ❤️ by <a href="https://github.com/tsaol">tsaol</a>
+</p>
+
+<p align="center">
+  <a href="#pdf-reader-mcp">⬆️ Back to Top</a>
+</p>

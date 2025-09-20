@@ -1,5 +1,5 @@
 """
-tsaol-pdf-reader-mcp
+pdf-reader-mcp
 
 A simplified Python MCP server for reading PDF files,
 optimized for Amazon Q CLI usage.

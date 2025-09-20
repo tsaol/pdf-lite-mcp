@@ -1,1 +1,1 @@
-"""Tests for tsaol-pdf-reader-mcp."""
+"""Tests for pdf-reader-mcp."""

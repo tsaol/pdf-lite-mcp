@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Simple test script for tsaol-pdf-reader-mcp.
+Simple test script for pdf-reader-mcp.
 Tests basic imports and model validation.
 """
 
@@ -104,7 +104,7 @@ def test_formatting():
 
 def main():
     """Run all tests."""
-    print("🧪 Running simple tests for tsaol-pdf-reader-mcp\n")
+    print("🧪 Running simple tests for pdf-reader-mcp\n")
 
     success = test_imports()
     if not success:
