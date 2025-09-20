@@ -22,6 +22,8 @@ try:
         CallToolRequest,
         CallToolResult,
         ListToolsRequest,
+        ServerCapabilities,
+        ToolsCapability,
     )
 except ImportError:
     print("Error: mcp package is required. Install with: uv add mcp>=1.1.0", file=sys.stderr)
@@ -320,7 +322,9 @@ async def main():
             InitializationOptions(
                 server_name="pdf-reader-mcp",
                 server_version="0.1.0",
-                capabilities={}
+                capabilities=ServerCapabilities(
+                    tools=ToolsCapability()
+                )
             )
         )
 
